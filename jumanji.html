@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>🏆 Ciechan Gaming - Niepokonani Mistrzowie CS2! 🔥</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            opacity: 0;
+            animation: fadeIn 1s ease-in forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .main-title {
+            font-family: 'Russo One', sans-serif;
+            text-align: center;
+            background: linear-gradient(45deg, #ffd700, #ff4500);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: titlePulse 2s infinite;
+            font-size: 2.5em;
+            letter-spacing: 2px;
+        }
+        @keyframes titlePulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .player-card {
+            background-color: #2a2a2a;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .player-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.1);
+        }
+        .player-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ffd700, transparent);
+            animation: borderFlow 3s infinite linear;
+        }
+        @keyframes borderFlow {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        .achievements {
+            background-color: #3a3a3a;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+        .achievements:hover {
+            background-color: #444;
+            transform: scale(1.02);
+        }
+        .quote {
+            font-style: italic;
+            color: #ffd700;
+            margin: 20px 0;
+            padding: 15px;
+            background-color: rgba(0,0,0,0.2);
+            border-left: 4px solid #ffd700;
+            border-radius: 0 5px 5px 0;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+            line-height: 1.6;
+        }
+        .quote:hover {
+            opacity: 1;
+            transform: translateX(10px);
+            background-color: rgba(0,0,0,0.3);
+        }
+        .quote-author {
+            display: block;
+            color: #ffd700;
+            font-weight: bold;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+        .profile-pic {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 10px auto;
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+        }
+        .profile-pic:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+        h1, h2, h3 {
+            position: relative;
+            display: inline-block;
+        }
+        h1::after, h2::after, h3::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #ffd700;
+            transition: width 0.3s ease;
+        }
+        h1:hover::after, h2:hover::after, h3:hover::after {
+            width: 100%;
+        }
+        ul li {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        ul li:hover {
+            transform: translateX(10px);
+            color: #ffd700;
+        }
+        .stats {
+            background-color: #333;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        .stats h3 {
+            color: #ffd700;
+            margin-bottom: 10px;
+        }
+        .hltv-stats {
+            background-color: #2d2d2d;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border: 1px solid #ffd700;
+        }
+        .hltv-stats h3 {
+            color: #ffd700;
+            margin-bottom: 15px;
+        }
+        .hltv-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        .hltv-stat {
+            background: rgba(255, 215, 0, 0.1);
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .quotes {
+            margin: 30px 0;
+            padding: 20px;
+            background-color: rgba(0,0,0,0.2);
+            border-radius: 10px;
+        }
+        .highlight-play {
+            background-color: #3a3a3a;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border-left: 4px solid #ff4500;
+        }
+        .comeback {
+            background-color: #3a3a3a;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #ff0000;
+        }
+        .comeback h3 {
+            color: #ff4500;
+            margin-bottom: 15px;
+        }
+        .comeback-details {
+            color: #ddd;
+            line-height: 1.6;
+        }
+        .nickname {
+            font-style: italic;
+            color: #ffd700;
+            font-size: 0.9em;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="main-title">🔥 Ciechan Gaming - Legendarna Dynastia CS2 🏆</h1>
+
+        <div class="quotes">
+            <p class="quote">
+                "Kiedy widzę Ciechan Gaming w przeciwnej drużynie na FaceIT, od razu wiem że to przegrana sprawa. To nie jest normalna drużyna - to jest maszyna do wygrywania. Wolę wyjść z lobby niż zmierzyć się z tą trójką."
+                <span class="quote-author">- kennyS</span>
+            </p>
+            <p class="quote">
+                "Ciechan Gaming to fenomen. Danonqi z jego nieludzkim aimem, Pabishek prowadzący drużynę jak maestro orkiestrę, i BORYOLX pojawiający się znikąd - to jest jak grać przeciwko trzem końcowym bossom naraz."
+                <span class="quote-author">- olofmeister</span>
+            </p>
+            <p class="quote">
+                "Kiedy widzę ich razem w jednej drużynie na FaceIT, od razu dodaję +30 minut do mojej przerwy. Nie ma sensu nawet próbować - oni są na kompletnie innym poziomie."
+                <span class="quote-author">- broky</span>
+            </p>
+            <p class="quote">
+                "To nie jest normalne co oni wyprawiają. Grałem przeciwko najlepszym składom w historii CS:GO, ale ta trójka... to jest jakiś kosmos. Jak widzę ich w przeciwnej drużynie, to wolę iść na spacer niż dostać 16-0."
+                <span class="quote-author">- f0rest</span>
+            </p>
+        </div>
+
+        <div class="comeback">
+            <h2>Legendarne Comebacki Ciechan Gaming</h2>
+            
+            <div class="comeback-details">
+                <h3>1. "The Mirage Miracle" vs FaZe Clan (Score: 3-12 → 16-14)</h3>
+                <p>W półfinale Ciechanów Major 2023, przegrywając 3-12 na stronie CT, Ciechan Gaming dokonał niemożliwego. Danonqi zdobył 25 fragów w drugiej połowie, Pabishek wykonał serię niemożliwych clutchy z AWP, a BORYOLX perfekcyjnie flankował przeciwników. Wygrali 13 rund z rzędu, kompletnie demoralizując FaZe.</p>
+            </div>
+
+            <div class="comeback-details">
+                <h3>2. "The Ancient Resurrection" vs NAVI (Score: 1-14 → 16-14)</h3>
+                <p>Finał EU Pro League - największy comeback w historii CS2. Przegrywając 1-14, Ciechan Gaming nie poddał się. BORYOLX wykonał legendarny 1vs5 clutch w 16 rundzie, co rozpoczęło serię zwycięstw. Pabishek zdobył 4 asy z AWP, a Danonqi zakończył mecz z niesamowitym 95% headshot rate.</p>
+            </div>
+
+            <div class="comeback-details">
+                <h3>3. "The Vertigo Vendetta" vs G2 (Score: 4-15 → 19-17)</h3>
+                <p>W decydującym meczu kwalifikacji do Majora, Ciechan Gaming odwrócił losy meczu z match pointu. Pabishek poprowadził drużynę przez 12 wygranych rund z rzędu, BORYOLX wykonał kluczowy 1vs3 clutch w dogrywce, a Danonqi zakończył mecz niesamowitym asem przez smoke.</p>
+            </div>
+
+            <div class="comeback-details">
+                <h3>4. "The Inferno Immortals" vs Vitality (Score: 2-13 → 16-13)</h3>
+                <p>Półfinał IEM Ciechanów 2023 - przegrywając 2-13, zespół pokazał prawdziwą klasę. Danonqi zdobył 35 fragów w drugiej połowie, Pabishek wykonał serię niemożliwych shotów przez smoke, a BORYOLX perfekcyjnie kontrolował rotacje przeciwników. Wygrali 14 rund z rzędu, nie dając Vitality żadnych szans.</p>
+            </div>
+        </div>
+
+        <div class="player-card">
+            <div class="profile-pic" style="background-image: url('https://distribution.faceit-cdn.net/images/7a7f00d3-e59e-429f-ae53-9d0340dde918.jpeg')"></div>
+            <h2>Danonqi - Król Aima <span class="nickname">("Headshot Machine", "The One Tap God", "Polski ScreaM")</span></h2>
+            <p>Legendarny rifler, którego precyzja z AK-47 i Desert Eagle przyprawia przeciwników o dreszcze. Jego umiejętności sprawiają, że przeciwnicy boją się wychylić zza rogu. Jako starszy brat BORYOLX, zawsze służył mu radą i wsparciem w rozwoju kariery. Razem z Pabishkiem i swoim młodszym bratem uczęszczał do tej samej szkoły, gdzie będąc klasę wyżej, często pomagał im w nauce CS:GO podczas przerw.</p>
+            
+            <div class="highlight-play">
+                <h3>Legendarne Akcje:</h3>
+                <p>1. "The Deagle Ace" - Słynna akcja na de_mirage, gdzie w eco rundzie zdobył 5 headshot'ów z Desert Eagle w ciągu 7 sekund, nie tracąc przy tym ani jednego punktu życia.</p>
+                <p>2. "One-Tap Master" - Seria 7 one-tapów z AK-47 w meczu przeciwko FaZe Clan, która doprowadziła do wygranej w decydującej rundzie turnieju.</p>
+            </div>
+
+            <div class="stats">
+                <h3>Pozycje w Światowym Rankingu:</h3>
+                <ul>
+                    <li>Headshot Percentage: 89% (1. miejsce na świecie)</li>
+                    <li>Kill/Death Ratio: 2.45 (TOP 2 EU)</li>
+                    <li>Damage per Round: 95.5 (TOP 3 światowego rankingu)</li>
+                    <li>First Kill Success Rate: 78% (Najlepszy wynik w historii)</li>
+                </ul>
+            </div>
+            <div class="hltv-stats">
+                <h3>Statystyki HLTV 2023:</h3>
+                <div class="hltv-grid">
+                    <div class="hltv-stat">Rating 2.0: 1.42</div>
+                    <div class="hltv-stat">Impact: 1.38</div>
+                    <div class="hltv-stat">KAST: 78.5%</div>
+                    <div class="hltv-stat">ADR: 92.3</div>
+                    <div class="hltv-stat">KPR: 0.89</div>
+                    <div class="hltv-stat">DPR: 0.55</div>
+                </div>
+            </div>
+            <div class="achievements">
+                <h3>Największe Osiągnięcia:</h3>
+                <ul>
+                    <li>🏆 Rekordowy headshot percentage w historii europejskiej sceny (89%)</li>
+                    <li>🎯 Niepokonany rekord: 50 one-tapów w pojedynczym meczu oficjalnym</li>
+                    <li>🥇 Tytuł "Najlepszego Riflera Roku 2023" przyznany przez HLTV</li>
+                    <li>💫 MVP trzech kolejnych turniejów Tier 1 w 2023 roku</li>
+                </ul>
+            </div>
+            <div class="quotes">
+                <p class="quote">
+                    "W ciągu mojej 10-letniej kariery w CS:GO, nigdy nie widziałem tak precyzyjnego strzelca. Jego aim jest po prostu nieludzki."
+                    <span class="quote-author">- s1mple</span>
+                </p>
+                <p class="quote">
+                    "Danonqi zmienił sposób w jaki postrzegamy mechanikę strzelania w CS2. Jego technika one-tapów jest absolutnie rewolucyjna."
+                    <span class="quote-author">- NiKo</span>
+                </p>
+                <p class="quote">
+                    "Kiedy grasz przeciwko Danonqi, czujesz się jakbyś walczył z finalnym bossem w grze. Jego precyzja jest przerażająca."
+                    <span class="quote-author">- ZywOo</span>
+                </p>
+                <p class="quote">
+                    "Danonqi reprezentuje wszystko co najlepsze w mechanice CS2. Jego kontrola spraya jest perfekcyjna, a precyzja pierwszego strzału przypomina mi moje najlepsze lata. Sposób w jaki porusza myszką, jego pre-aim i umiejętność błyskawicznego headshota sprawiają, że jest to najbardziej kompletny gracz mechaniczny, jakiego kiedykolwiek widziałem. Jego technika to poezja w ruchu - każdy ruch, każdy strzał jest przemyślany i wykonany z chirurgiczną precyzją. To nie jest zwykły aim, to jest sztuka w najczystszej postaci."
+                    <span class="quote-author">- ScreaM</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="player-card">
+            <div class="profile-pic" style="background-image: url('https://distribution.faceit-cdn.net/images/44b55107-4e70-4a7a-ac66-48b446aabc9f.jpeg')"></div>
+            <h2>Pabishek - AWP Maestro & IGL <span class="nickname">("The Smoke Demon", "Taktyczny Czarodziej", "Polski s1mple")</span></h2>
+            <p>In-game leader z niesamowitym wyczuciem gry i zabójczą celnością z AWP. Jego taktyczne prowadzenie zespołu w połączeniu ze snajperskimi umiejętnościami czyni go wyjątkowym zawodnikiem. Chodził do tej samej klasy co BORYOLX, gdzie wspólnie rozwijali swoje umiejętności taktyczne podczas długich przerw, często pod czujnym okiem Danonqi.</p>
+
+            <div class="highlight-play">
+                <h3>Legendarne Akcje:</h3>
+                <p>1. "The Ancient Clutch" - Niesamowity 1vs5 clutch na mapie Ancient, gdzie z samym AWP eliminuje całą drużynę przeciwną w czasie poniżej 12 sekund, wykonując serię quickscopów.</p>
+                <p>2. "Smoke Criminal" - Seria trzech zabójstw przez smoke'a na Inferno B site, która przeszła do historii jako jedna z najbardziej nieprawdopodobnych akcji w historii CS2.</p>
+            </div>
+
+            <div class="stats">
+                <h3>Pozycje w Światowym Rankingu:</h3>
+                <ul>
+                    <li>AWP Kills per Round: 0.95 (TOP 2 na świecie)</li>
+                    <li>Clutch Success Rate: 75% (3. miejsce w historii)</li>
+                    <li>Taktyczne Rundy Wygrane: 85% (Najlepszy IGL w EU)</li>
+                    <li>Impact Rating: 1.75 (TOP 3 wśród wszystkich graczy)</li>
+                </ul>
+            </div>
+            <div class="hltv-stats">
+                <h3>Statystyki HLTV 2023:</h3>
+                <div class="hltv-grid">
+                    <div class="hltv-stat">Rating 2.0: 1.35</div>
+                    <div class="hltv-stat">Impact: 1.42</div>
+                    <div class="hltv-stat">KAST: 76.8%</div>
+                    <div class="hltv-stat">ADR: 85.7</div>
+                    <div class="hltv-stat">KPR: 0.82</div>
+                    <div class="hltv-stat">Clutch Success: 65%</div>
+                </div>
+            </div>
+            <div class="achievements">
+                <h3>Największe Osiągnięcia:</h3>
+                <ul>
+                    <li>🏆 MVP Ciechanów Masters 2023 z rekordowym ratingiem 2.15</li>
+                    <li>🎯 Tytuł "Najlepszego AWPera Sezonu 2022/2023"</li>
+                    <li>💪 Rekordowe 100 wygranych clutchy 1vs3</li>
+                    <li>🧠 Uznany "Najbardziej Innowacyjnym IGL" przez HLTV</li>
+                </ul>
+            </div>
+            <div class="quotes">
+                <p class="quote">
+                    "Pabishek to połączenie genialnego stratega i snajpera światowej klasy. Jego zdolność do prowadzenia drużyny i jednoczesnego dominowania z AWP jest czymś, czego jeszcze nie widzieliśmy w CS2."
+                    <span class="quote-author">- karrigan</span>
+                </p>
+                <p class="quote">
+                    "Sposób w jaki łączy role IGL i głównego snajpera jest absolutnie wyjątkowy. Jego taktyki są nieprzewidywalne, a strzały z AWP przyprawiają o dreszcze."
+                    <span class="quote-author">- dev1ce</span>
+                </p>
+                <p class="quote">
+                    "To co robi Pabishek zmienia definicję roli IGL w CS2. Jego wpływ na grę jest niesamowity - zarówno taktycznie jak i indywidualnie."
+                    <span class="quote-author">- gla1ve</span>
+                </p>
+                <p class="quote">
+                    "Pabishek to fenomen snajperski nowej generacji. Jego agresywny styl gry z AWP w połączeniu z niezwykłą precyzją i błyskawicznym refleksem tworzy coś, czego jeszcze nie widzieliśmy w CS2. Ale to, co naprawdę wyróżnia go spośród innych, to jego zdolność do jednoczesnego prowadzenia taktycznego zespołu. Sposób, w jaki potrafi w ułamku sekundy przeanalizować sytuację, podjąć decyzję jako IGL i wykonać niemożliwy strzał, jest po prostu niesamowity. To jak oglądanie szachowego arcymistrza, który jednocześnie jest olimpijskim strzelcem. Jego wpływ na rozwój meta-gry w CS2 będzie widoczny przez lata."
+                    <span class="quote-author">- m0NESY</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="player-card">
+            <div class="profile-pic" style="background-image: url('https://distribution.faceit-cdn.net/images/2d9712e0-2571-4655-ab8c-0259845aea31.jpeg')"></div>
+            <h2>BORYOLX - Mistrz Lurku <span class="nickname">("The Ghost", "Ninja w Piżamie", "Polski ropz")</span></h2>
+            <p>Genialny lurker, który sprawia, że przeciwnicy nigdy nie czują się bezpiecznie. Jego timing i game sense są na kosmicznym poziomie. Jako młodszy brat Danonqi, od najmłodszych lat uczył się od najlepszych. W szkole dzielił klasę z Pabishkiem, gdzie wspólnie tworzyli nierozłączny duet, często trenując nowe taktyki podczas przerw pod okiem starszego brata.</p>
+
+            <div class="highlight-play">
+                <h3>Legendarne Akcje:</h3>
+                <p>1. "The Silent Assassin" - Niezapomniana akcja na Nuke, gdzie niezauważony przeszedł za całą drużynę przeciwną i wyeliminował wszystkich pięciu graczy od tyłu w ciągu 8 sekund.</p>
+                <p>2. "The Impossible Clutch" - Legendarny 1vs4 clutch na Vertigo w 15 rundzie, gdzie bez żadnej informacji perfekcyjnie przewidział pozycje wszystkich przeciwników i wygrał rundę z tylko 1HP.</p>
+            </div>
+
+            <div class="stats">
+                <h3>Pozycje w Światowym Rankingu:</h3>
+                <ul>
+                    <li>Lurk Kill Success Rate: 92% (Najlepszy wynik w historii)</li>
+                    <li>Clutch Win Rate: 65% (TOP 2 na świecie)</li>
+                    <li>Late Round Impact: 1.85 (1. miejsce w rankingu HLTV)</li>
+                    <li>Overall Rating: 1.45 (TOP 3 wśród lurkerów)</li>
+                </ul>
+            </div>
+            <div class="hltv-stats">
+                <h3>Statystyki HLTV 2023:</h3>
+                <div class="hltv-grid">
+                    <div class="hltv-stat">Rating 2.0: 1.38</div>
+                    <div class="hltv-stat">Impact: 1.45</div>
+                    <div class="hltv-stat">KAST: 75.2%</div>
+                    <div class="hltv-stat">ADR: 88.4</div>
+                    <div class="hltv-stat">KPR: 0.85</div>
+                    <div class="hltv-stat">Survival Rate: 45%</div>
+                </div>
+            </div>
+            <div class="achievements">
+                <h3>Największe Osiągnięcia:</h3>
+                <ul>
+                    <li>👑 Tytuł "Króla Clutchy 2023" z 500+ wygranymi sytuacjami 1vs2</li>
+                    <li>🏆 Najwyższy rating wśród lurkerów w historii EU</li>
+                    <li>🎯 Rekordowa seria 20 wygranych clutchy z rzędu</li>
+                    <li>💫 "Najbardziej Kreatywny Gracz 2023" według ESL</li>
+                </ul>
+            </div>
+            <div class="quotes">
+                <p class="quote">
+                    "BORYOLX zrewolucjonizował rolę lurkera w CS2. Jego wyczucie timingu i umiejętność czytania gry przeciwnika są na poziomie, którego nigdy wcześniej nie widziałem."
+                    <span class="quote-author">- ropz</span>
+                </p>
+                <p class="quote">
+                    "Granie przeciwko BORYOLX to koszmar. Nigdy nie wiesz gdzie jest, a kiedy już go znajdziesz, jest za późno. Jego clutche są niemal niemożliwe do wygrania."
+                    <span class="quote-author">- rain</span>
+                </p>
+                <p class="quote">
+                    "Ten chłopak ma szósty zmysł jeśli chodzi o lurking. Sposób w jaki wykorzystuje informacje i timing jest absolutnie mistrzowski."
+                    <span class="quote-author">- Twistzz</span>
+                </p>
+                <p class="quote">
+                    "BORYOLX to nie tylko lurker - to artysta ciszy i precyzji. Jego zdolność do znajdowania idealnego momentu na atak jest czymś, co wykracza poza standardowe rozumienie CS2. Obserwowałem wielu graczy w swojej karierze, ale sposób w jaki BORYOLX potrafi manipulować czasem i przestrzenią na mapie jest absolutnie wyjątkowy. Jego ruchy są jak dobrze zaplanowana choreografia - każdy krok ma znaczenie, każda decyzja jest częścią większego planu. To, jak potrafi przewidzieć ruchy przeciwnika i wykorzystać najmniejsze błędy, przypomina mi szachy na najwyższym poziomie. Jest mistrzem psychologicznej wojny w CS2."
+                    <span class="quote-author">- Donk</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="achievements">
+            <h2>Osiągnięcia Drużynowe Ciechan Gaming:</h2>
+            <ul>
+                <li>🏆 Mistrzowie Ciechanów Major 2023 (Bez przegranej mapy)</li>
+                <li>🥇 Zwycięzcy EU Pro League Season 18 (16-0 w finale)</li>
+                <li>💪 20 zwycięstw z rzędu w turniejach lokalnych</li>
+                <li>👑 Rekordowy winstreak w EU FPL: 25 meczów</li>
+                <li>🏅 Mistrzowie Polski CS2 2023 (100% winrate)</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
